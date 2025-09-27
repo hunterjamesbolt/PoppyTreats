@@ -109,39 +109,91 @@ export default function Home() {
     setIsLocating(true)
     setError(null)
     
+    // Check if we're in a secure context (required for geolocation in modern browsers)
+    if (typeof window !== 'undefined' && !window.isSecureContext && window.location.protocol !== 'http:') {
+      setError('Location access requires a secure connection (HTTPS). Please enter your location manually.')
+      setIsLocating(false)
+      return
+    }
+    
     if (!navigator.geolocation) {
-      setError('Geolocation is not supported by this browser.')
+      setError('Geolocation is not supported by this browser. Please enter your location manually.')
       setIsLocating(false)
       return
     }
 
+    // Add a timeout wrapper for additional safety
+    const timeoutId = setTimeout(() => {
+      setError('Location request is taking too long. Please enter your location manually or try again.')
+      setIsLocating(false)
+    }, 20000)
+
     navigator.geolocation.getCurrentPosition(
       async (position) => {
-        const coords = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+        clearTimeout(timeoutId)
+        try {
+          const coords = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+          setUserLocation(coords)
+          setHasLocationPermission(true)
+          
+          // Get location name
+          const locationName = await reverseGeocode(coords.lat, coords.lng)
+          setLocationName(locationName)
+          
+          setIsLocating(false)
+        } catch (err) {
+          console.error('Error processing location:', err)
+          setError('Error processing your location. Please try entering your location manually.')
+          setIsLocating(false)
         }
-        setUserLocation(coords)
-        setHasLocationPermission(true)
-        
-        // Get location name
-        const locationName = await reverseGeocode(coords.lat, coords.lng)
-        setLocationName(locationName)
-        
-        setIsLocating(false)
       },
       (error) => {
+        clearTimeout(timeoutId)
         console.error('Error getting location:', error)
-        setError('Unable to get your location. Please check your browser settings.')
+        let errorMessage = 'Unable to get your location. '
+        
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage += 'Location access was denied. Please click "Allow" when prompted or enter your location manually.'
+            break
+          case error.POSITION_UNAVAILABLE:
+            errorMessage += 'Location information is unavailable. Please check your connection or enter your location manually.'
+            break
+          case error.TIMEOUT:
+            errorMessage += 'Location request timed out. Please try again or enter your location manually.'
+            break
+          default:
+            errorMessage += 'An unknown error occurred. Please enter your location manually.'
+        }
+        
+        setError(errorMessage)
         setIsLocating(false)
       },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
+      { 
+        enableHighAccuracy: false, // Less accurate but more reliable for dev
+        timeout: 15000, 
+        maximumAge: 600000 // 10 minutes cache
+      }
     )
   }
 
   const handleLocationChange = async (location: string, coordinates: { lat: number; lng: number }) => {
     setUserLocation(coordinates)
     setLocationName(location)
+    setHasLocationPermission(true)
+  }
+
+  // Development helper - bypass location for testing
+  const handleDevBypass = () => {
+    if (process.env.NODE_ENV === 'development') {
+      const defaultLocation = { lat: 37.7749, lng: -122.4194 } // San Francisco
+      setUserLocation(defaultLocation)
+      setLocationName('San Francisco, CA')
+      setHasLocationPermission(true)
+    }
   }
 
   const handleExpandSearch = () => {
@@ -195,7 +247,10 @@ export default function Home() {
     return (
       <LandingPage 
         onLocationPermissionGranted={handleLocationRequest}
+        onManualLocation={handleLocationChange}
         isLoading={isLocating}
+        error={error}
+        onDevBypass={handleDevBypass}
       />
     )
   }
