@@ -216,6 +216,7 @@ class GooglePlacesService {
       hasGreenies,
       hasTikiCat,
       phone: place.formatted_phone_number,
+      website: place.website,
       coordinates: {
         lat: validPlaceLat,
         lng: validPlaceLng

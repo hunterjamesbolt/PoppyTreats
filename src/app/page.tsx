@@ -225,7 +225,7 @@ export default function Home() {
                 <p className={`text-sm ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
                 }`}>
-                  Find treats for your cat
+                  For Chicken
                 </p>
               </div>
             </div>

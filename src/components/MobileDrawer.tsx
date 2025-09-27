@@ -61,11 +61,12 @@ export default function MobileDrawer({
     const velocity = info.velocity.y
     const offset = info.offset.y
 
-    if (velocity > 500 || offset > 100) {
+    // More sensitive thresholds for better responsiveness
+    if (velocity > 300 || offset > 50) {
       // Dragging down
       if (drawerState === 'expanded') setDrawerState('partial')
       else if (drawerState === 'partial') setDrawerState('collapsed')
-    } else if (velocity < -500 || offset < -100) {
+    } else if (velocity < -300 || offset < -50) {
       // Dragging up
       if (drawerState === 'collapsed') setDrawerState('partial')
       else if (drawerState === 'partial') setDrawerState('expanded')
@@ -107,24 +108,29 @@ export default function MobileDrawer({
           height: getDrawerHeight()
         }}
         drag="y"
-        dragConstraints={{ top: 0, bottom: 0 }}
-        dragElastic={0.1}
+        dragConstraints={{ top: -100, bottom: 100 }}
+        dragElastic={0.05}
+        dragMomentum={false}
         onDrag={(event, info) => setDragY(info.offset.y)}
         onDragEnd={handleDragEnd}
         transition={{
           type: "spring",
-          damping: 30,
-          stiffness: 300
+          damping: 25,
+          stiffness: 400,
+          mass: 0.8
         }}
       >
-        {/* Drag Handle */}
-        <div className="flex justify-center pt-3 pb-2">
+        {/* Drag Handle - Non-draggable area */}
+        <div 
+          className="flex justify-center pt-3 pb-2"
+          onPointerDown={(e) => e.stopPropagation()}
+        >
           <div className={`w-10 h-1 rounded-full ${
             isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
           }`} />
         </div>
 
-        {/* Header */}
+        {/* Header - Draggable area */}
         <div className="px-4 pb-2">
           <button
             onClick={toggleDrawer}
@@ -145,8 +151,11 @@ export default function MobileDrawer({
           </button>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-hidden">
+        {/* Content - Non-draggable area */}
+        <div 
+          className="flex-1 overflow-hidden"
+          onPointerDown={(e) => e.stopPropagation()}
+        >
           {(drawerState === 'partial' || drawerState === 'expanded') && (
             <div className="px-4 h-full">
               {/* Product Filters - Only show in partial/expanded */}
