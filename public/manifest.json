@@ -1,0 +1,26 @@
+{
+  "name": "Poppy Treats - Find Cat Food & Treats",
+  "short_name": "Poppy Treats",
+  "description": "Find Tiki Cat pate and Greenies treats for your feline friend at nearby pet stores",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fef7ed",
+  "theme_color": "#f17316",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "lifestyle"],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

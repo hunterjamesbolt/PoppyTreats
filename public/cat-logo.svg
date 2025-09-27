@@ -1,0 +1,51 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="catGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cat body/head -->
+  <ellipse cx="50" cy="60" rx="35" ry="32" fill="#2D2D2D"/>
+  
+  <!-- Cat ears -->
+  <path d="M25 35 L15 15 L35 25 Z" fill="#2D2D2D"/>
+  <path d="M75 35 L85 15 L65 25 Z" fill="#2D2D2D"/>
+  
+  <!-- Inner ears -->
+  <path d="M25 32 L20 20 L30 26 Z" fill="#FFB6C1"/>
+  <path d="M75 32 L80 20 L70 26 Z" fill="#FFB6C1"/>
+  
+  <!-- White chest/face marking -->
+  <ellipse cx="50" cy="65" rx="20" ry="25" fill="white"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="42" cy="50" rx="6" ry="8" fill="#FFD700"/>
+  <ellipse cx="58" cy="50" rx="6" ry="8" fill="#FFD700"/>
+  <ellipse cx="42" cy="50" rx="3" ry="4" fill="black"/>
+  <ellipse cx="58" cy="50" rx="3" ry="4" fill="black"/>
+  <ellipse cx="43" cy="48" rx="1" ry="1.5" fill="white"/>
+  <ellipse cx="59" cy="48" rx="1" ry="1.5" fill="white"/>
+  
+  <!-- Nose -->
+  <path d="M50 62 L47 65 L53 65 Z" fill="#FF69B4"/>
+  
+  <!-- Mouth -->
+  <path d="M50 65 Q45 68 42 66" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M50 65 Q55 68 58 66" stroke="black" stroke-width="2" fill="none"/>
+  
+  <!-- Collar -->
+  <ellipse cx="50" cy="80" rx="25" ry="4" fill="#4169E1"/>
+  <ellipse cx="50" cy="80" rx="20" ry="2" fill="#FFD700"/>
+  
+  <!-- Heart tag -->
+  <path d="M50 85 Q45 82 42 85 Q42 88 50 95 Q58 88 58 85 Q55 82 50 85 Z" fill="#FF1493"/>
+  <text x="50" y="89" text-anchor="middle" fill="white" font-size="6" font-family="Arial">KITTY</text>
+  
+  <!-- Whiskers -->
+  <line x1="25" y1="55" x2="15" y2="53" stroke="black" stroke-width="1"/>
+  <line x1="25" y1="60" x2="15" y2="60" stroke="black" stroke-width="1"/>
+  <line x1="75" y1="55" x2="85" y2="53" stroke="black" stroke-width="1"/>
+  <line x1="75" y1="60" x2="85" y2="60" stroke="black" stroke-width="1"/>
+</svg>

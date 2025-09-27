@@ -1,0 +1,41 @@
+<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f17316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2590c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" rx="42" fill="url(#bg)"/>
+  
+  <!-- Cat head -->
+  <circle cx="96" cy="110" r="48" fill="white" opacity="0.95"/>
+  
+  <!-- Cat ears -->
+  <path d="M60 75 L40 35 L80 55 Z" fill="white" opacity="0.95"/>
+  <path d="M132 75 L152 35 L112 55 Z" fill="white" opacity="0.95"/>
+  
+  <!-- Inner ears -->
+  <path d="M60 70 L48 45 L72 60 Z" fill="#FBD7AA"/>
+  <path d="M132 70 L144 45 L120 60 Z" fill="#FBD7AA"/>
+  
+  <!-- Eyes -->
+  <circle cx="80" cy="100" r="10" fill="#FCD34D"/>
+  <circle cx="112" cy="100" r="10" fill="#FCD34D"/>
+  <circle cx="80" cy="100" r="4" fill="#1F2937"/>
+  <circle cx="112" cy="100" r="4" fill="#1F2937"/>
+  
+  <!-- Nose -->
+  <path d="M96 120 L88 128 L104 128 Z" fill="#EC4899"/>
+  
+  <!-- Mouth -->
+  <path d="M96 128 Q80 136 72 128" stroke="white" stroke-width="3" fill="none"/>
+  <path d="M96 128 Q112 136 120 128" stroke="white" stroke-width="3" fill="none"/>
+  
+  <!-- Whiskers -->
+  <line x1="40" y1="105" x2="68" y2="100" stroke="white" stroke-width="2"/>
+  <line x1="40" y1="115" x2="68" y2="110" stroke="white" stroke-width="2"/>
+  <line x1="152" y1="105" x2="124" y2="100" stroke="white" stroke-width="2"/>
+  <line x1="152" y1="115" x2="124" y2="110" stroke="white" stroke-width="2"/>
+</svg>

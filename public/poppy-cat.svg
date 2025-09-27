@@ -1,0 +1,58 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cat body - black -->
+  <ellipse cx="100" cy="130" rx="45" ry="50" fill="#2D2D2D"/>
+  
+  <!-- Cat head - black -->
+  <circle cx="100" cy="85" r="40" fill="#2D2D2D"/>
+  
+  <!-- Cat ears - black -->
+  <path d="M70 60 L60 25 L85 45 Z" fill="#2D2D2D"/>
+  <path d="M130 60 L140 25 L115 45 Z" fill="#2D2D2D"/>
+  
+  <!-- Inner ears - pink -->
+  <path d="M70 55 L65 35 L80 48 Z" fill="#FFB6C1"/>
+  <path d="M130 55 L135 35 L120 48 Z" fill="#FFB6C1"/>
+  
+  <!-- White chest marking -->
+  <ellipse cx="100" cy="95" rx="18" ry="25" fill="white"/>
+  <ellipse cx="100" cy="130" rx="25" ry="35" fill="white"/>
+  
+  <!-- Eyes - large yellow with black pupils -->
+  <ellipse cx="88" cy="75" rx="8" ry="10" fill="#FFD700"/>
+  <ellipse cx="112" cy="75" rx="8" ry="10" fill="#FFD700"/>
+  <ellipse cx="88" cy="75" rx="4" ry="6" fill="black"/>
+  <ellipse cx="112" cy="75" rx="4" ry="6" fill="black"/>
+  <!-- Eye highlights */
+  <ellipse cx="90" cy="72" rx="1.5" ry="2" fill="white"/>
+  <ellipse cx="114" cy="72" rx="1.5" ry="2" fill="white"/>
+  
+  <!-- Nose - pink triangle -->
+  <path d="M100 88 L96 93 L104 93 Z" fill="#FF69B4"/>
+  
+  <!-- Mouth -->
+  <path d="M100 93 Q94 97 90 95" stroke="black" stroke-width="2" fill="none"/>
+  <path d="M100 93 Q106 97 110 95" stroke="black" stroke-width="2" fill="none"/>
+  
+  <!-- White stripe on face -->
+  <ellipse cx="100" cy="82" rx="3" ry="12" fill="white"/>
+  
+  <!-- Blue collar -->
+  <ellipse cx="100" cy="115" rx="35" ry="8" fill="#4169E1"/>
+  <ellipse cx="100" cy="115" rx="30" ry="5" fill="#FFD700"/>
+  
+  <!-- Heart tag - pink with "KITTY" -->
+  <g transform="translate(100, 125)">
+    <path d="M0 5 Q-8 0 -12 5 Q-12 12 0 22 Q12 12 12 5 Q8 0 0 5 Z" fill="#FF1493"/>
+    <text x="0" y="12" text-anchor="middle" fill="white" font-size="8" font-family="Arial, sans-serif" font-weight="bold">KITTY</text>
+  </g>
+  
+  <!-- Whiskers -->
+  <line x1="55" y1="80" x2="40" y2="78" stroke="black" stroke-width="2"/>
+  <line x1="55" y1="88" x2="40" y2="88" stroke="black" stroke-width="2"/>
+  <line x1="145" y1="80" x2="160" y2="78" stroke="black" stroke-width="2"/>
+  <line x1="145" y1="88" x2="160" y2="88" stroke="black" stroke-width="2"/>
+  
+  <!-- Paws - small black ovals at bottom -->
+  <ellipse cx="80" cy="170" rx="8" ry="12" fill="#2D2D2D"/>
+  <ellipse cx="120" cy="170" rx="8" ry="12" fill="#2D2D2D"/>
+</svg>
