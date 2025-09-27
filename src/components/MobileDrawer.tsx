@@ -111,6 +111,7 @@ export default function MobileDrawer({
         dragConstraints={{ top: -100, bottom: 100 }}
         dragElastic={0.05}
         dragMomentum={false}
+        dragPropagation={false}
         onDrag={(event, info) => setDragY(info.offset.y)}
         onDragEnd={handleDragEnd}
         transition={{
@@ -152,10 +153,7 @@ export default function MobileDrawer({
         </div>
 
         {/* Content - Non-draggable area */}
-        <div 
-          className="flex-1 overflow-hidden"
-          onPointerDown={(e) => e.stopPropagation()}
-        >
+        <div className="flex-1 overflow-hidden">
           {(drawerState === 'partial' || drawerState === 'expanded') && (
             <div className="px-4 h-full">
               {/* Product Filters - Only show in partial/expanded */}
@@ -172,7 +170,18 @@ export default function MobileDrawer({
               )}
 
               {/* Store List */}
-              <div className="h-full overflow-y-auto pb-safe">
+              <div 
+                className="h-full overflow-y-auto pb-safe"
+                style={{ touchAction: 'pan-y' }}
+                onTouchStart={(e) => e.stopPropagation()}
+                onPointerDown={(e) => {
+                  // Only prevent dragging if we're actually scrolling
+                  const target = e.target as HTMLElement
+                  if (target.closest('.overflow-y-auto')) {
+                    e.stopPropagation()
+                  }
+                }}
+              >
                 {error && !dismissedError ? (
                   <NoStoresFound
                     onExpandSearch={onExpandSearch}
